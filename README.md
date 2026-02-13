@@ -2,6 +2,8 @@
 
 A semantic layer demo that illustrates why defining metrics once matters at enterprise scale.
 
+**🌐 Live Demo:** [https://semantic-layer-demo.streamlit.app/](https://semantic-layer-demo.streamlit.app/)
+
 ## Overview
 
 This Streamlit app demonstrates how different source systems (VGS, VPC, SI+) compute the same procurement metrics differently, and how a governed semantic layer provides a single source of truth.
@@ -67,7 +69,9 @@ semantic-layer-demo/
 
 ## Deployment
 
-Deploy to Streamlit Community Cloud:
+**Live Application:** [https://semantic-layer-demo.streamlit.app/](https://semantic-layer-demo.streamlit.app/)
+
+The app is deployed on Streamlit Community Cloud. To deploy your own version:
 
 1. Push to GitHub repository `cynthialmy/semantic-layer-demo`
 2. Connect to Streamlit Cloud
