@@ -100,8 +100,9 @@ Records delivery receipts, implementation status
 
 st.sidebar.markdown("---")
 st.sidebar.markdown(
-    '<div style="font-size: 0.8rem; opacity: 0.6; text-align: center;">'
-    'Synthetic data modeled after enterprise procurement systems'
+    '<div class="sidebar-synthetic-notice">'
+    'All data shown is <strong>synthetic</strong> — generated to illustrate metric inconsistencies. '
+    'No real company data is used.'
     '</div>',
     unsafe_allow_html=True
 )
@@ -119,13 +120,18 @@ st.markdown("""
     <p class="hero-description">
         This interactive demo accompanies
         <a href="https://cynthialmy.github.io/2026/02/13/semantic-layer-bi-product.html" target="_blank">Building a Semantic-Layer-Driven BI Product</a>.
-        It uses synthetic procurement data modeled after real enterprise systems (VGS, VPC, SI+) to show
-        how a <strong>semantic layer</strong> resolves metric inconsistencies by defining each metric once,
-        with precise business logic, and computing a single certified answer.
+        It shows how a <strong>semantic layer</strong> resolves metric inconsistencies
+        by defining each metric once, with precise business logic, and computing a single certified answer.
     </p>
-    <div class="synthetic-data-notice">
-        All data in this demo is synthetic. No real enterprise data is used. The systems (VGS, VPC, SI+) and their data are modeled to illustrate how metric inconsistencies arise at enterprise scale.
-    </div>
+</div>
+""", unsafe_allow_html=True)
+
+# Synthetic data banner
+st.markdown("""
+<div class="synthetic-banner">
+    All data in this demo is synthetic. The three source systems (VGS, VPC, SI+) and their
+    procurement records are generated to illustrate how metric definitions diverge across
+    real enterprise environments. No actual company data is used.
 </div>
 """, unsafe_allow_html=True)
 
@@ -548,7 +554,7 @@ st.markdown("""
 <div class="footer">
     <p>
         <strong>Metric Trust Explorer</strong> — Interactive companion to
-        <a href="https://cynthialmy.github.io/2026-02-13-semantic-layer-bi/" target="_blank">Building a Semantic-Layer-Driven BI Product</a>
+        <a href="https://cynthialmy.github.io/2025-02-13-semantic-layer-bi/" target="_blank">Building a Semantic-Layer-Driven BI Product</a>
     </p>
     <p>Built by <a href="https://cynthialmy.github.io" target="_blank">Cynthia Mengyuan Li</a> | Synthetic data modeled after enterprise procurement systems</p>
 </div>
