@@ -119,7 +119,7 @@ st.markdown("""
     <p class="hero-subtitle">What happens when three systems define the same metric differently?</p>
     <p class="hero-description">
         This interactive demo accompanies
-        <a href="https://cynthialmy.github.io/2026/02/13/semantic-layer-bi-product.html" target="_blank">Building a Semantic-Layer-Driven BI Product</a>.
+        <a href="https://cynthialmy.github.io/2025/02/13/semantic-layer-bi-product.html" target="_blank">Building a Semantic-Layer-Driven BI Product</a>.
         It shows how a <strong>semantic layer</strong> resolves metric inconsistencies
         by defining each metric once, with precise business logic, and computing a single certified answer.
     </p>
