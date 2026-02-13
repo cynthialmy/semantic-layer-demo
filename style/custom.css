@@ -2,19 +2,161 @@
 
 /* Main container */
 .main .block-container {
-    padding-top: 2rem;
+    padding-top: 1.5rem;
     padding-bottom: 2rem;
+    max-width: 1200px;
 }
 
-/* Metric Cards */
+/* ─── Sidebar ─── */
+.sidebar-header {
+    text-align: center;
+    padding: 0.5rem 0;
+}
+
+.sidebar-metric-hint {
+    font-size: 0.82rem;
+    opacity: 0.7;
+    padding: 0.5rem 0.75rem;
+    margin-top: 0.5rem;
+    border-left: 3px solid #27AE60;
+    background: rgba(39, 174, 96, 0.08);
+    border-radius: 0 4px 4px 0;
+    line-height: 1.4;
+}
+
+/* ─── Hero Section ─── */
+.hero-section {
+    text-align: center;
+    padding: 1.5rem 1rem 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero-title {
+    font-size: 2.2rem !important;
+    font-weight: 800 !important;
+    margin-bottom: 0.3rem !important;
+    letter-spacing: -0.5px;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    font-weight: 500;
+    opacity: 0.85;
+    margin-bottom: 0.75rem;
+}
+
+.hero-description {
+    font-size: 0.92rem;
+    max-width: 720px;
+    margin: 0 auto;
+    line-height: 1.6;
+    opacity: 0.75;
+}
+
+.hero-description a {
+    color: #27AE60;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.hero-description a:hover {
+    text-decoration: underline;
+}
+
+/* ─── Step Indicator ─── */
+.step-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin: 1rem 0 0.5rem;
+    flex-wrap: wrap;
+}
+
+.step-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.step-number {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: white;
+    flex-shrink: 0;
+}
+
+.step-problem { background: #E74C3C; }
+.step-solution { background: #2A9D8F; }
+.step-impact { background: #F39C12; }
+
+.step-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    opacity: 0.8;
+}
+
+.step-arrow {
+    font-size: 1.2rem;
+    opacity: 0.4;
+    font-weight: 300;
+}
+
+
+/* ─── Section Headers ─── */
+.section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.section-number {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+    color: white;
+    margin-top: 2px;
+}
+
+.problem-bg { background: #E74C3C; }
+.solution-bg { background: #2A9D8F; }
+.impact-bg { background: #F39C12; }
+
+.section-desc {
+    font-size: 0.92rem;
+    opacity: 0.75;
+    margin: 0.25rem 0 0 !important;
+    line-height: 1.5;
+}
+
+
+/* ─── Metric Cards ─── */
 .metric-card {
     padding: 1.5rem;
-    border-radius: 8px;
+    border-radius: 10px;
     border: 2px solid;
     margin-bottom: 1rem;
     background-color: var(--secondary-background-color);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    min-height: 200px;
+    min-height: 220px;
+}
+
+.metric-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
 }
 
 .metric-card h3 {
@@ -28,7 +170,6 @@
     color: #262730;
 }
 
-/* Dark mode - Streamlit uses data-theme="dark" */
 [data-theme="dark"] .metric-card h3,
 .stApp[data-theme="dark"] .metric-card h3 {
     color: #E8E8E8;
@@ -39,44 +180,112 @@
     color: #E8E8E8;
 }
 
-.metric-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
 .vgs-card {
     border-color: #4472C4;
-    background: linear-gradient(135deg, rgba(68, 114, 196, 0.1) 0%, rgba(68, 114, 196, 0.05) 100%);
+    background: linear-gradient(135deg, rgba(68, 114, 196, 0.1) 0%, rgba(68, 114, 196, 0.03) 100%);
 }
 
 .vpc-card {
     border-color: #F39C12;
-    background: linear-gradient(135deg, rgba(243, 156, 18, 0.1) 0%, rgba(243, 156, 18, 0.05) 100%);
+    background: linear-gradient(135deg, rgba(243, 156, 18, 0.1) 0%, rgba(243, 156, 18, 0.03) 100%);
 }
 
 .si-card {
     border-color: #4ECDC4;
-    background: linear-gradient(135deg, rgba(78, 205, 196, 0.1) 0%, rgba(78, 205, 196, 0.05) 100%);
+    background: linear-gradient(135deg, rgba(78, 205, 196, 0.1) 0%, rgba(78, 205, 196, 0.03) 100%);
 }
 
 .na-card {
     border-color: #7F8C8D;
-    background: linear-gradient(135deg, rgba(127, 140, 141, 0.1) 0%, rgba(127, 140, 141, 0.05) 100%);
+    background: linear-gradient(135deg, rgba(127, 140, 141, 0.1) 0%, rgba(127, 140, 141, 0.03) 100%);
     opacity: 0.6;
 }
 
-/* Governed Metric */
+/* System badge */
+.system-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    color: white;
+    margin-bottom: 0.25rem;
+}
+
+.vgs-badge { background: #4472C4; }
+.vpc-badge { background: #F39C12; }
+.si-badge { background: #4ECDC4; color: #1a1a1a; }
+.na-badge { background: #7F8C8D; }
+.governed-badge { background: #27AE60; }
+
+.system-role {
+    font-size: 0.82rem !important;
+    opacity: 0.7;
+    margin-top: 0.1rem !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.metric-value {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0.75rem 0;
+    line-height: 1.2;
+}
+
+.na-value {
+    opacity: 0.4;
+    font-size: 1.5rem;
+}
+
+.methodology-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    opacity: 0.85;
+    margin-bottom: 0.25rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+
+/* ─── Governed Metric ─── */
 .governed-metric {
     padding: 2rem;
-    border-radius: 8px;
+    border-radius: 10px;
     border: 3px solid #27AE60;
-    background: linear-gradient(135deg, rgba(39, 174, 96, 0.15) 0%, rgba(39, 174, 96, 0.05) 100%);
+    background: linear-gradient(135deg, rgba(39, 174, 96, 0.12) 0%, rgba(39, 174, 96, 0.04) 100%);
     margin-bottom: 2rem;
     text-align: center;
     min-height: 200px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.governed-label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #27AE60;
+    margin-bottom: 0.5rem;
+}
+
+.governed-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #27AE60;
+    margin: 0.5rem 0;
+}
+
+.governed-explanation {
+    font-size: 0.85rem;
+    opacity: 0.65;
+    max-width: 320px;
+    margin: 0.5rem auto 0;
+    line-height: 1.5;
 }
 
 .governed-metric h3 {
@@ -86,14 +295,29 @@
     margin-bottom: 0.5rem;
 }
 
-/* Definition Card */
+
+/* ─── Definition Card ─── */
 .definition-card {
     padding: 1.5rem;
-    border-radius: 8px;
+    border-radius: 10px;
     border: 2px solid #2A9D8F;
     background-color: var(--secondary-background-color);
     margin-bottom: 1rem;
     min-height: 400px;
+    position: relative;
+}
+
+.definition-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    background: #2A9D8F;
+    color: white;
+    margin-bottom: 0.75rem;
 }
 
 .definition-card h3 {
@@ -112,15 +336,9 @@
     margin: 0.5rem 0 1rem 1.5rem;
 }
 
-/* Dark mode */
-[data-theme="dark"] .definition-card p,
-.stApp[data-theme="dark"] .definition-card p {
-    color: #E8E8E8;
-}
-
-[data-theme="dark"] .definition-card ul,
-.stApp[data-theme="dark"] .definition-card ul {
-    color: #E8E8E8;
+.definition-card ul.source-list {
+    font-size: 0.82rem;
+    opacity: 0.8;
 }
 
 .definition-card li {
@@ -135,29 +353,66 @@
     font-family: 'Courier New', monospace;
 }
 
-/* Footer */
-.footer {
-    margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 1px solid #444;
-    text-align: center;
-    color: #555;
-    font-size: 0.9rem;
+/* Dark mode */
+[data-theme="dark"] .definition-card p,
+.stApp[data-theme="dark"] .definition-card p {
+    color: #E8E8E8;
 }
 
-[data-theme="dark"] .footer,
-.stApp[data-theme="dark"] .footer {
-    color: #999;
+[data-theme="dark"] .definition-card ul,
+.stApp[data-theme="dark"] .definition-card ul {
+    color: #E8E8E8;
 }
 
-/* Caption text in cards */
+
+/* ─── Impact Cards ─── */
+.impact-card {
+    padding: 1.25rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: var(--secondary-background-color);
+    min-height: 160px;
+    margin-bottom: 0.5rem;
+}
+
+.impact-card p {
+    color: #262730;
+    margin: 0.5rem 0;
+}
+
+[data-theme="dark"] .impact-card p,
+.stApp[data-theme="dark"] .impact-card p {
+    color: #E8E8E8;
+}
+
+
+/* ─── Caption text ─── */
 .caption-text {
+    font-size: 0.82rem !important;
+    opacity: 0.65 !important;
+    line-height: 1.45 !important;
     color: #555 !important;
 }
 
 [data-theme="dark"] .caption-text,
 .stApp[data-theme="dark"] .caption-text {
     color: #999 !important;
+}
+
+
+/* ─── Footer ─── */
+.footer {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #444;
+    text-align: center;
+    color: #555;
+    font-size: 0.85rem;
+}
+
+[data-theme="dark"] .footer,
+.stApp[data-theme="dark"] .footer {
+    color: #999;
 }
 
 .footer a {
@@ -169,7 +424,8 @@
     text-decoration: underline;
 }
 
-/* Headers */
+
+/* ─── Typography ─── */
 h1 {
     color: #262730;
     font-weight: 700;
@@ -186,7 +442,6 @@ h3 {
     font-weight: 600;
 }
 
-/* Dark mode */
 [data-theme="dark"] h1,
 .stApp[data-theme="dark"] h1 {
     color: #E8E8E8;
@@ -202,7 +457,8 @@ h3 {
     color: #E8E8E8;
 }
 
-/* Metrics */
+
+/* ─── Streamlit overrides ─── */
 [data-testid="stMetricValue"] {
     font-size: 2rem;
     font-weight: 700;
@@ -218,17 +474,14 @@ h3 {
     color: #999;
 }
 
-/* Dataframe styling */
 .dataframe {
     background-color: var(--secondary-background-color);
 }
 
-/* Warning boxes */
 [data-testid="stAlert"] {
-    border-left: 4px solid #F39C12;
+    border-left: 4px solid #E74C3C;
 }
 
-/* Graphviz container */
 .graphviz {
     background-color: var(--secondary-background-color);
     padding: 1rem;
@@ -236,7 +489,8 @@ h3 {
     border: 1px solid #444;
 }
 
-/* Responsive adjustments */
+
+/* ─── Responsive ─── */
 @media (max-width: 768px) {
     .metric-card {
         padding: 1rem;
@@ -249,9 +503,19 @@ h3 {
     [data-testid="stMetricValue"] {
         font-size: 1.5rem;
     }
+
+    .step-indicator {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .step-arrow {
+        transform: rotate(90deg);
+    }
 }
 
-/* Scrollbar styling */
+
+/* ─── Scrollbar ─── */
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
