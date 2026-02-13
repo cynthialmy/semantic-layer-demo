@@ -1,0 +1,189 @@
+/* Metric Trust Explorer - Custom Styles */
+
+/* Main container */
+.main .block-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+/* Metric Cards */
+.metric-card {
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 2px solid;
+    margin-bottom: 1rem;
+    background-color: var(--secondary-background-color);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.metric-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.metric-card > p:first-child {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #999;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.vgs-card {
+    border-color: #4472C4;
+    background: linear-gradient(135deg, rgba(68, 114, 196, 0.1) 0%, rgba(68, 114, 196, 0.05) 100%);
+}
+
+.vpc-card {
+    border-color: #F39C12;
+    background: linear-gradient(135deg, rgba(243, 156, 18, 0.1) 0%, rgba(243, 156, 18, 0.05) 100%);
+}
+
+.si-card {
+    border-color: #4ECDC4;
+    background: linear-gradient(135deg, rgba(78, 205, 196, 0.1) 0%, rgba(78, 205, 196, 0.05) 100%);
+}
+
+.na-card {
+    border-color: #7F8C8D;
+    background: linear-gradient(135deg, rgba(127, 140, 141, 0.1) 0%, rgba(127, 140, 141, 0.05) 100%);
+    opacity: 0.6;
+}
+
+/* Governed Metric */
+.governed-metric {
+    padding: 2rem;
+    border-radius: 8px;
+    border: 3px solid #27AE60;
+    background: linear-gradient(135deg, rgba(39, 174, 96, 0.15) 0%, rgba(39, 174, 96, 0.05) 100%);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.governed-metric h3 {
+    color: #27AE60;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Definition Card */
+.definition-card {
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 2px solid #2A9D8F;
+    background-color: var(--secondary-background-color);
+    margin-bottom: 1rem;
+}
+
+.definition-card h3 {
+    color: #2A9D8F;
+    margin-bottom: 1rem;
+}
+
+.definition-card code {
+    background-color: rgba(42, 157, 143, 0.2);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    color: #4ECDC4;
+    font-family: 'Courier New', monospace;
+}
+
+/* Footer */
+.footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #444;
+    text-align: center;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.footer a {
+    color: #27AE60;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* Headers */
+h1 {
+    color: #E8E8E8;
+    font-weight: 700;
+}
+
+h2 {
+    color: #E8E8E8;
+    font-weight: 600;
+    margin-top: 2rem;
+}
+
+h3 {
+    color: #E8E8E8;
+    font-weight: 600;
+}
+
+/* Metrics */
+[data-testid="stMetricValue"] {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+[data-testid="stMetricLabel"] {
+    font-size: 0.9rem;
+    color: #999;
+}
+
+/* Dataframe styling */
+.dataframe {
+    background-color: var(--secondary-background-color);
+}
+
+/* Warning boxes */
+[data-testid="stAlert"] {
+    border-left: 4px solid #F39C12;
+}
+
+/* Graphviz container */
+.graphviz {
+    background-color: var(--secondary-background-color);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #444;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .metric-card {
+        padding: 1rem;
+    }
+
+    .governed-metric {
+        padding: 1.5rem;
+    }
+
+    [data-testid="stMetricValue"] {
+        font-size: 1.5rem;
+    }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--secondary-background-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #666;
+}

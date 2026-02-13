@@ -1,0 +1,95 @@
+metrics:
+  - name: "Supplier On-Time Delivery Rate"
+    description: "Percentage of deliveries received within the agreed delivery window, excluding partial deliveries and force majeure events"
+    formula: "(deliveries_on_time / total_deliveries) * 100"
+    grain: "supplier, quarter"
+    time_logic: "rolling_90_days"
+    inclusions:
+      - "Deliveries with actual_receipt_date between agreed_window_start and agreed_window_end"
+      - "Full deliveries only (excludes partial deliveries)"
+    exclusions:
+      - "Partial deliveries (is_partial_delivery = true)"
+      - "Force majeure events (force_majeure_flag = true)"
+      - "Deliveries outside the agreed window"
+    authoritative_source:
+      - "delivery_timestamps: system_si (actual_receipt_date)"
+      - "agreed_windows: system_vgs (agreed_window_start, agreed_window_end)"
+      - "partial_delivery_flag: system_vgs (is_partial_delivery)"
+      - "force_majeure_flag: system_vgs (force_majeure_flag)"
+    owner: "Procurement Operations Team"
+    sql_logic: |
+      WITH delivery_events AS (
+        SELECT 
+          si.supplier_id,
+          si.actual_receipt_date,
+          vgs.agreed_window_start,
+          vgs.agreed_window_end,
+          vgs.is_partial_delivery,
+          vgs.force_majeure_flag
+        FROM system_si si
+        INNER JOIN system_vgs vgs 
+          ON si.supplier_id = vgs.supplier_id
+          AND si.actual_receipt_date BETWEEN vgs.agreed_window_start AND vgs.agreed_window_end
+        WHERE vgs.is_partial_delivery = false
+          AND vgs.force_majeure_flag = false
+      )
+      SELECT 
+        supplier_id,
+        COUNT(CASE WHEN actual_receipt_date BETWEEN agreed_window_start AND agreed_window_end THEN 1 END) * 100.0 / COUNT(*) AS on_time_rate
+      FROM delivery_events
+      WHERE actual_receipt_date >= CURRENT_DATE - INTERVAL '90 days'
+      GROUP BY supplier_id
+
+  - name: "Negotiated Savings"
+    description: "Total cost savings achieved through negotiation, calculated as the difference between prior contract unit price and current unit price, multiplied by volume"
+    formula: "(prior_contract_price - current_unit_price) * volume"
+    grain: "supplier, quarter"
+    time_logic: "calendar_quarter"
+    inclusions:
+      - "Active contracts with both prior and current pricing data"
+      - "Volume from current contract period"
+    exclusions:
+      - "Contracts without prior contract price data"
+      - "Zero or negative volume periods"
+    authoritative_source:
+      - "prior_contract_price: system_vgs (prior_contract_price)"
+      - "current_unit_price: system_vpc (unit_price)"
+      - "volume: system_vpc (volume)"
+    owner: "Procurement Finance Team"
+    sql_logic: |
+      SELECT 
+        vgs.supplier_id,
+        vpc.quarter,
+        (vgs.prior_contract_price - vpc.unit_price) * vpc.volume AS negotiated_savings
+      FROM system_vgs vgs
+      INNER JOIN system_vpc vpc 
+        ON vgs.supplier_id = vpc.supplier_id
+      WHERE vgs.prior_contract_price IS NOT NULL
+        AND vpc.volume > 0
+        AND vgs.prior_contract_price > vpc.unit_price
+
+  - name: "Active Contract Value"
+    description: "Total value of active contracts including amendments, calculated as original contract value plus all amendments, for contracts that have not yet expired"
+    formula: "original_value + SUM(amendment_value)"
+    grain: "supplier, contract"
+    time_logic: "as_of_date"
+    inclusions:
+      - "Contracts where contract_end >= CURRENT_DATE"
+      - "Original value plus all amendments"
+    exclusions:
+      - "Expired contracts (contract_end < CURRENT_DATE)"
+      - "Future-dated contracts (contract_start > CURRENT_DATE)"
+    authoritative_source:
+      - "contract_dates: system_vgs (contract_start, contract_end)"
+      - "original_value: system_vgs (original_value)"
+      - "amendment_value: system_vgs (amendment_value)"
+    owner: "Contract Management Team"
+    sql_logic: |
+      SELECT 
+        supplier_id,
+        contract_id,
+        original_value + amendment_value AS active_contract_value
+      FROM system_vgs
+      WHERE contract_end >= CURRENT_DATE
+        AND contract_start <= CURRENT_DATE
+      GROUP BY supplier_id, contract_id, original_value, amendment_value
