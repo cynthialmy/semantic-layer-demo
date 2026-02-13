@@ -14,20 +14,23 @@
     margin-bottom: 1rem;
     background-color: var(--secondary-background-color);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    min-height: 200px;
+}
+
+.metric-card h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: #E8E8E8;
+}
+
+.metric-card p {
+    margin: 0.5rem 0;
+    color: #E8E8E8;
 }
 
 .metric-card:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-.metric-card > p:first-child {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: #999;
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
 }
 
 .vgs-card {
@@ -59,12 +62,17 @@
     background: linear-gradient(135deg, rgba(39, 174, 96, 0.15) 0%, rgba(39, 174, 96, 0.05) 100%);
     margin-bottom: 2rem;
     text-align: center;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .governed-metric h3 {
     color: #27AE60;
     font-size: 1.5rem;
-    margin-bottom: 1rem;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
 }
 
 /* Definition Card */
@@ -74,11 +82,27 @@
     border: 2px solid #2A9D8F;
     background-color: var(--secondary-background-color);
     margin-bottom: 1rem;
+    min-height: 400px;
 }
 
 .definition-card h3 {
     color: #2A9D8F;
+    margin-top: 0;
     margin-bottom: 1rem;
+}
+
+.definition-card p {
+    color: #E8E8E8;
+    margin: 0.75rem 0;
+}
+
+.definition-card ul {
+    color: #E8E8E8;
+    margin: 0.5rem 0 1rem 1.5rem;
+}
+
+.definition-card li {
+    margin: 0.25rem 0;
 }
 
 .definition-card code {

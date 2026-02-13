@@ -74,7 +74,6 @@ results = compute_metric_per_system(
 
 # Panel 1: The Problem
 st.header("🔴 The Problem")
-st.markdown(f"**Metric:** {selected_metric}")
 st.markdown("Three source systems compute the same metric differently:")
 
 col1, col2, col3 = st.columns(3)
@@ -83,76 +82,112 @@ col1, col2, col3 = st.columns(3)
 with col1:
     vgs_value = results.get("VGS")
     if vgs_value is not None:
-        st.markdown(f'<div class="metric-card vgs-card">', unsafe_allow_html=True)
-        st.markdown(f"**{selected_metric}**")
-        st.markdown("### VGS System")
-        st.markdown("**Supplier Governance**")
-        st.metric("Value", f"{vgs_value:,.2f}" if isinstance(vgs_value, (int, float)) else str(vgs_value))
-
+        caption_text = ""
         if selected_metric == "Supplier On-Time Delivery Rate":
-            st.caption("Excludes partial deliveries. Uses own delivery timestamps.")
+            caption_text = "Excludes partial deliveries. Uses own delivery timestamps."
         elif selected_metric == "Negotiated Savings":
-            st.caption("Uses prior contract price. Extrapolates volume from contract value.")
+            caption_text = "Uses prior contract price. Extrapolates volume from contract value."
         elif selected_metric == "Active Contract Value":
-            st.caption("Includes amendments. Shows total contract value.")
-
-        st.markdown('</div>', unsafe_allow_html=True)
+            caption_text = "Includes amendments. Shows total contract value."
+        
+        value_str = f"{vgs_value:,.2f}" if isinstance(vgs_value, (int, float)) else str(vgs_value)
+        if selected_metric == "Supplier On-Time Delivery Rate":
+            value_display = f"{value_str}%"
+        else:
+            value_display = f"${value_str}"
+        
+        card_html = f'''
+        <div class="metric-card vgs-card">
+            <h3>VGS System</h3>
+            <p><strong>Supplier Governance</strong></p>
+            <div style="font-size: 2rem; font-weight: 700; margin: 1rem 0;">{value_display}</div>
+            <p style="font-size: 0.9rem; color: #999; margin-top: 0.5rem;">{caption_text}</p>
+        </div>
+        '''
+        st.markdown(card_html, unsafe_allow_html=True)
     else:
-        st.markdown(f'<div class="metric-card na-card">', unsafe_allow_html=True)
-        st.markdown("### VGS System")
-        st.markdown("**N/A**")
-        st.caption("This system does not track this metric.")
-        st.markdown('</div>', unsafe_allow_html=True)
+        card_html = '''
+        <div class="metric-card na-card">
+            <h3>VGS System</h3>
+            <p><strong>N/A</strong></p>
+            <p style="font-size: 0.9rem; color: #999;">This system does not track this metric.</p>
+        </div>
+        '''
+        st.markdown(card_html, unsafe_allow_html=True)
 
 # VPC Card
 with col2:
     vpc_value = results.get("VPC")
     if vpc_value is not None:
-        st.markdown(f'<div class="metric-card vpc-card">', unsafe_allow_html=True)
-        st.markdown(f"**{selected_metric}**")
-        st.markdown("### VPC System")
-        st.markdown("**Price/Cost Management**")
-        st.metric("Value", f"{vpc_value:,.2f}" if isinstance(vpc_value, (int, float)) else str(vpc_value))
-
+        caption_text = ""
         if selected_metric == "Supplier On-Time Delivery Rate":
-            st.caption("N/A - VPC does not track delivery performance.")
+            caption_text = "N/A - VPC does not track delivery performance."
         elif selected_metric == "Negotiated Savings":
-            st.caption("Uses list price as baseline. Inflated savings calculation.")
+            caption_text = "Uses list price as baseline. Inflated savings calculation."
         elif selected_metric == "Active Contract Value":
-            st.caption("Original value only. Does not include amendments.")
-
-        st.markdown('</div>', unsafe_allow_html=True)
+            caption_text = "Original value only. Does not include amendments."
+        
+        value_str = f"{vpc_value:,.2f}" if isinstance(vpc_value, (int, float)) else str(vpc_value)
+        if selected_metric == "Supplier On-Time Delivery Rate":
+            value_display = f"{value_str}%"
+        else:
+            value_display = f"${value_str}"
+        
+        card_html = f'''
+        <div class="metric-card vpc-card">
+            <h3>VPC System</h3>
+            <p><strong>Price/Cost Management</strong></p>
+            <div style="font-size: 2rem; font-weight: 700; margin: 1rem 0;">{value_display}</div>
+            <p style="font-size: 0.9rem; color: #999; margin-top: 0.5rem;">{caption_text}</p>
+        </div>
+        '''
+        st.markdown(card_html, unsafe_allow_html=True)
     else:
-        st.markdown(f'<div class="metric-card na-card">', unsafe_allow_html=True)
-        st.markdown("### VPC System")
-        st.markdown("**N/A**")
-        st.caption("This system does not track this metric.")
-        st.markdown('</div>', unsafe_allow_html=True)
+        card_html = '''
+        <div class="metric-card na-card">
+            <h3>VPC System</h3>
+            <p><strong>N/A</strong></p>
+            <p style="font-size: 0.9rem; color: #999;">This system does not track this metric.</p>
+        </div>
+        '''
+        st.markdown(card_html, unsafe_allow_html=True)
 
 # SI+ Card
 with col3:
     si_value = results.get("SI+")
     if si_value is not None:
-        st.markdown(f'<div class="metric-card si-card">', unsafe_allow_html=True)
-        st.markdown(f"**{selected_metric}**")
-        st.markdown("### SI+ System")
-        st.markdown("**Implementation Tracking**")
-        st.metric("Value", f"{si_value:,.2f}" if isinstance(si_value, (int, float)) else str(si_value))
-
+        caption_text = ""
         if selected_metric == "Supplier On-Time Delivery Rate":
-            st.caption("Counts partial deliveries as on-time. Uses own receipt timestamps.")
+            caption_text = "Counts partial deliveries as on-time. Uses own receipt timestamps."
         elif selected_metric == "Negotiated Savings":
-            st.caption("N/A - SI+ does not track savings.")
+            caption_text = "N/A - SI+ does not track savings."
         elif selected_metric == "Active Contract Value":
-            st.caption("Tracks committed spend, not contract value. Different concept.")
-
-        st.markdown('</div>', unsafe_allow_html=True)
+            caption_text = "Tracks committed spend, not contract value. Different concept."
+        
+        value_str = f"{si_value:,.2f}" if isinstance(si_value, (int, float)) else str(si_value)
+        if selected_metric == "Supplier On-Time Delivery Rate":
+            value_display = f"{value_str}%"
+        else:
+            value_display = f"${value_str}"
+        
+        card_html = f'''
+        <div class="metric-card si-card">
+            <h3>SI+ System</h3>
+            <p><strong>Implementation Tracking</strong></p>
+            <div style="font-size: 2rem; font-weight: 700; margin: 1rem 0;">{value_display}</div>
+            <p style="font-size: 0.9rem; color: #999; margin-top: 0.5rem;">{caption_text}</p>
+        </div>
+        '''
+        st.markdown(card_html, unsafe_allow_html=True)
     else:
-        st.markdown(f'<div class="metric-card na-card">', unsafe_allow_html=True)
-        st.markdown("### SI+ System")
-        st.markdown("**N/A**")
-        st.caption("This system does not track this metric.")
-        st.markdown('</div>', unsafe_allow_html=True)
+        card_html = '''
+        <div class="metric-card na-card">
+            <h3>SI+ System</h3>
+            <p><strong>N/A</strong></p>
+            <p style="font-size: 0.9rem; color: #999;">This system does not track this metric.</p>
+        </div>
+        '''
+        st.markdown(card_html, unsafe_allow_html=True)
 
 # Show delta
 values = [v for v in [results.get("VGS"), results.get("VPC"), results.get("SI+")] if v is not None]
@@ -178,38 +213,45 @@ col_left, col_right = st.columns([1, 1])
 with col_left:
     metric_def = get_metric_by_name(selected_metric)
     if metric_def:
-        st.markdown(f'<div class="definition-card">', unsafe_allow_html=True)
-        st.markdown(f"### {metric_def['name']}")
-        st.markdown(f"**{metric_def['description']}**")
-        st.markdown("---")
-        st.markdown(f"**Formula:** `{metric_def['formula']}`")
-        st.markdown(f"**Grain:** {metric_def['grain']}")
-        st.markdown(f"**Time Logic:** {metric_def['time_logic']}")
-        st.markdown(f"**Owner:** {metric_def['owner']}")
-
-        st.markdown("**Inclusions:**")
-        for inc in metric_def['inclusions']:
-            st.markdown(f"- {inc}")
-
-        st.markdown("**Exclusions:**")
-        for exc in metric_def['exclusions']:
-            st.markdown(f"- {exc}")
-
-        st.markdown('</div>', unsafe_allow_html=True)
+        inclusions_html = "".join([f"<li>{inc}</li>" for inc in metric_def['inclusions']])
+        exclusions_html = "".join([f"<li>{exc}</li>" for exc in metric_def['exclusions']])
+        
+        definition_html = f'''
+        <div class="definition-card">
+            <h3>{metric_def['name']}</h3>
+            <p><strong>{metric_def['description']}</strong></p>
+            <hr style="border: 1px solid #444; margin: 1rem 0;">
+            <p><strong>Formula:</strong> <code>{metric_def['formula']}</code></p>
+            <p><strong>Grain:</strong> {metric_def['grain']}</p>
+            <p><strong>Time Logic:</strong> {metric_def['time_logic']}</p>
+            <p><strong>Owner:</strong> {metric_def['owner']}</p>
+            <p><strong>Inclusions:</strong></p>
+            <ul>{inclusions_html}</ul>
+            <p><strong>Exclusions:</strong></p>
+            <ul>{exclusions_html}</ul>
+        </div>
+        '''
+        st.markdown(definition_html, unsafe_allow_html=True)
 
 with col_right:
     governed_value = results.get("Governed")
     if governed_value is not None:
-        st.markdown(f'<div class="governed-metric">', unsafe_allow_html=True)
-        st.markdown("### Certified Value")
         if isinstance(governed_value, (int, float)):
             if selected_metric == "Supplier On-Time Delivery Rate":
-                st.metric("Governed Metric", f"{governed_value:.2f}%", delta=None)
+                value_display = f"{governed_value:.2f}%"
             else:
-                st.metric("Governed Metric", f"${governed_value:,.2f}", delta=None)
+                value_display = f"${governed_value:,.2f}"
         else:
-            st.metric("Governed Metric", str(governed_value), delta=None)
-        st.markdown('</div>', unsafe_allow_html=True)
+            value_display = str(governed_value)
+        
+        governed_html = f'''
+        <div class="governed-metric">
+            <h3>Certified Value</h3>
+            <p style="font-size: 0.9rem; color: #999; margin-bottom: 0.5rem;">Governed Metric</p>
+            <div style="font-size: 2.5rem; font-weight: 700; color: #27AE60; margin: 1rem 0;">{value_display}</div>
+        </div>
+        '''
+        st.markdown(governed_html, unsafe_allow_html=True)
 
         st.markdown("### Lineage")
         lineage_diagram = create_lineage_diagram(selected_metric)
