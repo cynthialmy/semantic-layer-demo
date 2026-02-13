@@ -20,11 +20,22 @@
 .metric-card h3 {
     margin-top: 0;
     margin-bottom: 0.5rem;
-    color: #E8E8E8;
+    color: #262730;
 }
 
 .metric-card p {
     margin: 0.5rem 0;
+    color: #262730;
+}
+
+/* Dark mode - Streamlit uses data-theme="dark" */
+[data-theme="dark"] .metric-card h3,
+.stApp[data-theme="dark"] .metric-card h3 {
+    color: #E8E8E8;
+}
+
+[data-theme="dark"] .metric-card p,
+.stApp[data-theme="dark"] .metric-card p {
     color: #E8E8E8;
 }
 
@@ -92,13 +103,24 @@
 }
 
 .definition-card p {
-    color: #E8E8E8;
+    color: #262730;
     margin: 0.75rem 0;
 }
 
 .definition-card ul {
-    color: #E8E8E8;
+    color: #262730;
     margin: 0.5rem 0 1rem 1.5rem;
+}
+
+/* Dark mode */
+[data-theme="dark"] .definition-card p,
+.stApp[data-theme="dark"] .definition-card p {
+    color: #E8E8E8;
+}
+
+[data-theme="dark"] .definition-card ul,
+.stApp[data-theme="dark"] .definition-card ul {
+    color: #E8E8E8;
 }
 
 .definition-card li {
@@ -119,8 +141,23 @@
     padding-top: 2rem;
     border-top: 1px solid #444;
     text-align: center;
-    color: #999;
+    color: #555;
     font-size: 0.9rem;
+}
+
+[data-theme="dark"] .footer,
+.stApp[data-theme="dark"] .footer {
+    color: #999;
+}
+
+/* Caption text in cards */
+.caption-text {
+    color: #555 !important;
+}
+
+[data-theme="dark"] .caption-text,
+.stApp[data-theme="dark"] .caption-text {
+    color: #999 !important;
 }
 
 .footer a {
@@ -134,19 +171,35 @@
 
 /* Headers */
 h1 {
-    color: #E8E8E8;
+    color: #262730;
     font-weight: 700;
 }
 
 h2 {
-    color: #E8E8E8;
+    color: #262730;
     font-weight: 600;
     margin-top: 2rem;
 }
 
 h3 {
-    color: #E8E8E8;
+    color: #262730;
     font-weight: 600;
+}
+
+/* Dark mode */
+[data-theme="dark"] h1,
+.stApp[data-theme="dark"] h1 {
+    color: #E8E8E8;
+}
+
+[data-theme="dark"] h2,
+.stApp[data-theme="dark"] h2 {
+    color: #E8E8E8;
+}
+
+[data-theme="dark"] h3,
+.stApp[data-theme="dark"] h3 {
+    color: #E8E8E8;
 }
 
 /* Metrics */
@@ -157,6 +210,11 @@ h3 {
 
 [data-testid="stMetricLabel"] {
     font-size: 0.9rem;
+    color: #555;
+}
+
+[data-theme="dark"] [data-testid="stMetricLabel"],
+.stApp[data-theme="dark"] [data-testid="stMetricLabel"] {
     color: #999;
 }
 

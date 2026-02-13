@@ -101,7 +101,7 @@ with col1:
             <h3>VGS System</h3>
             <p><strong>Supplier Governance</strong></p>
             <div style="font-size: 2rem; font-weight: 700; margin: 1rem 0;">{value_display}</div>
-            <p style="font-size: 0.9rem; color: #999; margin-top: 0.5rem;">{caption_text}</p>
+            <p class="caption-text" style="font-size: 0.9rem; color: #555; margin-top: 0.5rem;">{caption_text}</p>
         </div>
         '''
         st.markdown(card_html, unsafe_allow_html=True)
@@ -110,7 +110,7 @@ with col1:
         <div class="metric-card na-card">
             <h3>VGS System</h3>
             <p><strong>N/A</strong></p>
-            <p style="font-size: 0.9rem; color: #999;">This system does not track this metric.</p>
+            <p class="caption-text" style="font-size: 0.9rem; color: #555;">This system does not track this metric.</p>
         </div>
         '''
         st.markdown(card_html, unsafe_allow_html=True)
@@ -138,7 +138,7 @@ with col2:
             <h3>VPC System</h3>
             <p><strong>Price/Cost Management</strong></p>
             <div style="font-size: 2rem; font-weight: 700; margin: 1rem 0;">{value_display}</div>
-            <p style="font-size: 0.9rem; color: #999; margin-top: 0.5rem;">{caption_text}</p>
+            <p class="caption-text" style="font-size: 0.9rem; color: #555; margin-top: 0.5rem;">{caption_text}</p>
         </div>
         '''
         st.markdown(card_html, unsafe_allow_html=True)
@@ -147,7 +147,7 @@ with col2:
         <div class="metric-card na-card">
             <h3>VPC System</h3>
             <p><strong>N/A</strong></p>
-            <p style="font-size: 0.9rem; color: #999;">This system does not track this metric.</p>
+            <p class="caption-text" style="font-size: 0.9rem; color: #555;">This system does not track this metric.</p>
         </div>
         '''
         st.markdown(card_html, unsafe_allow_html=True)
@@ -175,7 +175,7 @@ with col3:
             <h3>SI+ System</h3>
             <p><strong>Implementation Tracking</strong></p>
             <div style="font-size: 2rem; font-weight: 700; margin: 1rem 0;">{value_display}</div>
-            <p style="font-size: 0.9rem; color: #999; margin-top: 0.5rem;">{caption_text}</p>
+            <p class="caption-text" style="font-size: 0.9rem; color: #555; margin-top: 0.5rem;">{caption_text}</p>
         </div>
         '''
         st.markdown(card_html, unsafe_allow_html=True)
@@ -184,7 +184,7 @@ with col3:
         <div class="metric-card na-card">
             <h3>SI+ System</h3>
             <p><strong>N/A</strong></p>
-            <p style="font-size: 0.9rem; color: #999;">This system does not track this metric.</p>
+            <p class="caption-text" style="font-size: 0.9rem; color: #555;">This system does not track this metric.</p>
         </div>
         '''
         st.markdown(card_html, unsafe_allow_html=True)
@@ -247,7 +247,7 @@ with col_right:
         governed_html = f'''
         <div class="governed-metric">
             <h3>Certified Value</h3>
-            <p style="font-size: 0.9rem; color: #999; margin-bottom: 0.5rem;">Governed Metric</p>
+            <p class="caption-text" style="font-size: 0.9rem; color: #555; margin-bottom: 0.5rem;">Governed Metric</p>
             <div style="font-size: 2.5rem; font-weight: 700; color: #27AE60; margin: 1rem 0;">{value_display}</div>
         </div>
         '''
