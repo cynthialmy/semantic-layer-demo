@@ -123,6 +123,9 @@ st.markdown("""
         how a <strong>semantic layer</strong> resolves metric inconsistencies by defining each metric once,
         with precise business logic, and computing a single certified answer.
     </p>
+    <div class="synthetic-data-notice">
+        All data in this demo is synthetic. No real enterprise data is used. The systems (VGS, VPC, SI+) and their data are modeled to illustrate how metric inconsistencies arise at enterprise scale.
+    </div>
 </div>
 """, unsafe_allow_html=True)
 
