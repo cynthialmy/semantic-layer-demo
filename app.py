@@ -88,20 +88,20 @@ st.sidebar.markdown("---")
 # Context: What are these systems?
 st.sidebar.markdown("#### The three source systems")
 st.sidebar.markdown("""
-**VGS** — Supplier Governance
+**VGS**: Supplier Governance
 Manages contracts, compliance, delivery agreements
 
-**VPC** — Price & Cost Management
+**VPC**: Price & Cost Management
 Tracks pricing, volumes, cost benchmarks
 
-**SI+** — Implementation Tracking
+**SI+**: Implementation Tracking
 Records delivery receipts, implementation status
 """)
 
 st.sidebar.markdown("---")
 st.sidebar.markdown(
     '<div class="sidebar-synthetic-notice">'
-    'All data shown is <strong>synthetic</strong> — generated to illustrate metric inconsistencies. '
+    'All data shown is <strong>synthetic</strong>, generated to illustrate metric inconsistencies. '
     'No real company data is used.'
     '</div>',
     unsafe_allow_html=True
@@ -174,7 +174,7 @@ st.markdown("""
     <span class="section-number problem-bg">1</span>
     <div>
         <h2 style="margin: 0;">The Inconsistency</h2>
-        <p class="section-desc">Three source systems compute <strong>{metric}</strong> using different logic. Each number below is technically correct within its own system — but they tell conflicting stories.</p>
+        <p class="section-desc">Three source systems compute <strong>{metric}</strong> using different logic. Each number below is technically correct within its own system, but they tell conflicting stories.</p>
     </div>
 </div>
 """.format(metric=selected_metric), unsafe_allow_html=True)
@@ -319,14 +319,14 @@ if len(values) > 1:
         if selected_metric == "Supplier On-Time Delivery Rate":
             delta_pct = abs(max_val - min_val)
             st.error(
-                f"**Disagreement: {delta_pct:.1f} percentage points** — "
+                f"**Disagreement: {delta_pct:.1f} percentage points**, "
                 f"A stakeholder querying VGS gets a different answer than one querying SI+. "
                 f"Which number goes into the executive dashboard?"
             )
         else:
             delta_pct = abs((max_val - min_val) / min_val * 100) if min_val > 0 else 0
             st.error(
-                f"**Disagreement: {delta_pct:.1f}%** — "
+                f"**Disagreement: {delta_pct:.1f}%**, "
                 f"Same metric, same time period, different answers. "
                 f"Which system is right?"
             )
@@ -341,7 +341,7 @@ st.markdown("""
     <span class="section-number solution-bg">2</span>
     <div>
         <h2 style="margin: 0;">The Governed Definition</h2>
-        <p class="section-desc">A semantic layer defines <strong>{metric}</strong> once — with a precise formula, documented inclusions/exclusions, and a single accountable owner. Every dashboard, report, and AI assistant queries this definition instead of raw tables.</p>
+        <p class="section-desc">A semantic layer defines <strong>{metric}</strong> once, with a precise formula, documented inclusions/exclusions, and a single accountable owner. Every dashboard, report, and AI assistant queries this definition instead of raw tables.</p>
     </div>
 </div>
 """.format(metric=selected_metric), unsafe_allow_html=True)
@@ -396,7 +396,7 @@ with col_right:
             <div class="governed-value">{value_display}</div>
             <p class="governed-explanation">
                 This value is computed from the governed definition on the left.
-                Every consumer — dashboards, reports, AI assistants — gets this same number.
+                Every consumer, dashboards, reports, AI assistants, gets this same number.
             </p>
         </div>
         '''
@@ -553,7 +553,7 @@ st.markdown("---")
 st.markdown("""
 <div class="footer">
     <p>
-        <strong>Metric Trust Explorer</strong> — Interactive companion to
+        <strong>Metric Trust Explorer</strong>, interactive companion to
         <a href="https://cynthialmy.github.io/2025-02-13-semantic-layer-bi/" target="_blank">Building a Semantic-Layer-Driven BI Product</a>
     </p>
     <p>Built by <a href="https://cynthialmy.github.io" target="_blank">Cynthia Mengyuan Li</a> | Synthetic data modeled after enterprise procurement systems</p>
