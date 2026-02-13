@@ -80,7 +80,7 @@ The app is deployed on Streamlit Community Cloud. To deploy your own version:
 
 ## Related Content
 
-This demo accompanies the blog post: [Building a Semantic-Layer-Driven BI Product](https://cynthialmy.github.io/2025/02/13/semantic-layer-bi-product.html)
+This demo accompanies the blog post: [Building a Semantic-Layer-Driven BI Product](https://cynthialmy.github.io/2026-02-13-semantic-layer-bi/)
 
 ## License
 
